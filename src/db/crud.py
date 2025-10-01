@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from src.app.db import models
+from src.db import models
 
 
 def create_job(db: Session, job_id: str, path: str, entity_id: str, resolution: str):

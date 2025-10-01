@@ -2,7 +2,7 @@ import enum
 from sqlalchemy import Column, Integer, String, DateTime, Enum, JSON
 from sqlalchemy.sql import func
 
-from src.app.db.session import Base
+from src.db.session import Base
 
 
 class JobStatus(str, enum.Enum):

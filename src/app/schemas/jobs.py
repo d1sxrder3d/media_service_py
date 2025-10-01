@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List, Optional
 from datetime import datetime
 
-from src.app.db.models import JobStatus
+from src.db.models import JobStatus
 
 
 class JobResult(BaseModel):
