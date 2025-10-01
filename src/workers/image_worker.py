@@ -7,14 +7,13 @@ from celery import Celery, group
 from PIL import Image
 import boto3
 
-from src.app.core.config import settings
-from src.app.db.session import SessionLocal
-from src.app.db import crud, models
+from src.core.config import settings
+from src.db.session import SessionLocal
+from src.db import crud, models
 
 # --- Celery app ---
 celery_app = Celery("image_worker")
 
-# Загружаем конфигурацию из нашего объекта settings
 celery_app.conf.broker_url = settings.redis_url
 celery_app.conf.result_backend = settings.redis_url
 
