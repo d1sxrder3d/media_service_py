@@ -1,0 +1,11 @@
+init.sh
+
+*\__pycache__
+*.pyc
+
+.env
+
+*.png
+
+*.venv
+*.vscode

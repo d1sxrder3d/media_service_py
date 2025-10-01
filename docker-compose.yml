@@ -1,0 +1,21 @@
+
+x-base-app: &base-app
+  build: .
+  env_file:
+    - .env
+  restart: unless-stopped
+
+services:
+  # --- API ---
+  api:
+    <<: *base-app 
+    container_name: media_api
+
+  # --- Celery ---
+  worker:
+    <<: *base-app  
+    container_name: media_worker
+
+volumes:
+  postgres_data:
+  minio_data:
