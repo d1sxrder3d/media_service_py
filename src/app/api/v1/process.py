@@ -10,9 +10,9 @@ import uuid
 from pathlib import Path
 
 from src.app.schemas.process import ProcessResponse
-from src.app import worker
-from src.app.db import crud
-from src.app.db.session import get_db
+from src.workers import image_worker
+from src.db import crud
+from src.db.session import get_db
 
 router = APIRouter(
     prefix="/process",
@@ -44,6 +44,6 @@ async def process_job(
         contents = await img.read()
         image_contents_list.append(contents)
 
-    worker.process_images_job.delay(job_id, path, entity_id, image_contents_list, resolution)
+    image_worker.process_images_job.delay(job_id, path, entity_id, image_contents_list, resolution)
 
     return ProcessResponse(job_id=job_id, status="queued")

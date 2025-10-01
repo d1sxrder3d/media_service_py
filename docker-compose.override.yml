@@ -53,7 +53,7 @@ services:
       "
 
   api:
-    command: uvicorn src.app.main:app --host 0.0.0.0 --port 8000 --reload
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
     ports:
       - "8000:8000"
     depends_on:
@@ -61,7 +61,7 @@ services:
         condition: service_healthy
 
   worker:
-    command: celery -A src.app.worker.celery_app worker --loglevel=info
+    command: celery -A app.worker.celery_app worker --loglevel=info
     depends_on:
       db:
         condition: service_healthy
